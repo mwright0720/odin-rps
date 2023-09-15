@@ -101,3 +101,12 @@ function playRound(playerSelection, computerSelection) {
         return message + choiceInfo;
     }
 }
+
+function game() {
+    let maxRounds = 5;
+    for(let i = 1; i <= 5; i ++) {
+        playerSelection = prompt("Enter rock, paper, or scissors");
+        computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
