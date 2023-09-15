@@ -28,3 +28,76 @@ function getRandomNumber(lowerBound, upperBound) {
     
     return Math.floor(Math.random() * (upperBound - lowerBound + 1) + lowerBound);
 }
+
+function capitalize(stringToChange) {
+    return stringToChange.charAt(0) + stringToChange.slice(1).toLowerCase();
+    
+}
+
+function playRound(playerSelection, computerSelection) {
+    
+    playerSelection = capitalize(playerSelection);
+    result = "Error";
+
+    if (playerSelection === "Rock") {
+
+        if (computerSelection === "Rock") {
+            result = "tie";
+        }
+
+        else if (computerSelection === "Paper") {
+            result = "lose";
+        }
+
+        else if (computerSelection === "Scissors") {
+            result = "win";
+        }
+
+    }
+
+    else if (playerSelection === "Paper") {
+        if (computerSelection === "Rock") {
+            result = "win";
+        }
+
+        else if (computerSelection === "Paper") {
+            result = "tie";
+        }
+
+        else if (computerSelection === "Scissors") {
+            result = "lose";
+        }
+
+    }
+
+    else if (playerSelection === "Scissors") {
+        if (computerSelection === "Rock") {
+            result = "lose";
+        }
+
+        else if (computerSelection === "Paper") {
+            result = "win";
+        }
+
+        else if (computerSelection === "Scissors") {
+            result = "tie";
+        }
+
+    }
+
+    message = "You " + result + "! ";
+    if (result === "win") {
+        choiceInfo = playerSelection + " beats " + computerSelection;
+        return message + choiceInfo + "!";
+    }
+
+    else if (result === "lose") {
+        choiceInfo = computerSelection + " beats " + playerSelection;
+        return message + choiceInfo + "!";
+    }
+
+    else if (result === "tie") {
+        choiceInfo = playerSelection + " and "  + computerSelection + " are the same!";
+        return message + choiceInfo;
+    }
+}
