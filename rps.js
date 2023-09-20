@@ -36,6 +36,7 @@ function capitalize(stringToChange) {
 
 function playRound(playerSelection, computerSelection) {
     
+    const results = document.querySelector('#results');
     playerSelection = capitalize(playerSelection);
     result = "Error";
 
@@ -88,25 +89,29 @@ function playRound(playerSelection, computerSelection) {
     message = "You " + result + "! ";
     if (result === "win") {
         choiceInfo = playerSelection + " beats " + computerSelection;
-        return message + choiceInfo + "!";
+        results.textContent =  message + choiceInfo + "!";
     }
 
     else if (result === "lose") {
         choiceInfo = computerSelection + " beats " + playerSelection;
-        return message + choiceInfo + "!";
+        results.textContent =  message + choiceInfo + "!";
     }
 
     else if (result === "tie") {
         choiceInfo = playerSelection + " and "  + computerSelection + " are the same!";
-        return message + choiceInfo;
+        results.textContent =  message + choiceInfo;
     }
 }
 
-function game() {
-    let maxRounds = 5;
-    for(let i = 1; i <= 5; i ++) {
-        playerSelection = prompt("Enter rock, paper, or scissors");
-        computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-}
+
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach( (button) => {
+
+    button.addEventListener('click', function (e) {
+        
+        
+        console.log(playRound(e.target.id, getComputerChoice()));
+    });
+});
