@@ -34,12 +34,26 @@ function capitalize(stringToChange) {
     
 }
 
+function updateScore(score, results) {
+    score.textContent = "Player:" + playerScore + ", Computer:" + computerScore;
+    results.appendChild(score);
+}
+
+function declareWinner(winner)
+{
+    playerScore = 0;
+    computerScore = 0;
+    const gameEndMessage = document.createElement('h1');
+    gameEndMessage.textContent = "The " + winner + " has won!";
+    results.appendChild(gameEndMessage); 
+}
+
 function playRound(playerSelection, computerSelection) {
     
 
     
     const results = document.querySelector('#results');
-    const score = document.querySelector('#score');
+    const score = document.createElement('p');
     playerSelection = capitalize(playerSelection);
     result = "Error";
 
@@ -106,6 +120,20 @@ function playRound(playerSelection, computerSelection) {
     else if (result === "tie") {
         choiceInfo = playerSelection + " and "  + computerSelection + " are the same!";
         results.textContent =  message + choiceInfo;
+    }
+    
+    updateScore(score, results);
+    
+    if (playerScore === 5)
+    {
+        declareWinner("player", results);
+        
+    }
+
+    if (computerScore === 5)
+    {
+        declareWinner("computer", results);
+    
     }
     
 }
