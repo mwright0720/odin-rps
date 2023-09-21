@@ -36,7 +36,10 @@ function capitalize(stringToChange) {
 
 function playRound(playerSelection, computerSelection) {
     
+
+    
     const results = document.querySelector('#results');
+    const score = document.querySelector('#score');
     playerSelection = capitalize(playerSelection);
     result = "Error";
 
@@ -88,11 +91,14 @@ function playRound(playerSelection, computerSelection) {
 
     message = "You " + result + "! ";
     if (result === "win") {
+        playerScore += 1;
         choiceInfo = playerSelection + " beats " + computerSelection;
         results.textContent =  message + choiceInfo + "!";
+
     }
 
     else if (result === "lose") {
+        computerScore += 1;
         choiceInfo = computerSelection + " beats " + playerSelection;
         results.textContent =  message + choiceInfo + "!";
     }
@@ -101,11 +107,14 @@ function playRound(playerSelection, computerSelection) {
         choiceInfo = playerSelection + " and "  + computerSelection + " are the same!";
         results.textContent =  message + choiceInfo;
     }
+    
 }
 
 
 
 const buttons = document.querySelectorAll('button');
+var playerScore = 0;
+var computerScore = 0;
 
 buttons.forEach( (button) => {
 
